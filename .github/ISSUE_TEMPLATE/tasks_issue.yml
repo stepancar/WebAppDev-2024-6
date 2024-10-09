@@ -1,7 +1,7 @@
 name: Задачи
 description: Назначить задачи себе или другому участнику.
 title: "[Tasks]: "
-labels: ["bug"]
+labels: ["enhancement"]
 body:
   - type: textarea
     id: tasks-description
