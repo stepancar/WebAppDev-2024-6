@@ -1,0 +1,37 @@
+name: Задачи
+description: Назначить задачи себе или другому участнику.
+title: "[Tasks]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: tasks-description
+    attributes:
+      label: Описание задач
+      description: Кратко опишите задачи, которые нужно выполнить. Что их объединяет? Чего позволяет добиться их успешное выполнение?
+  - type: markdown
+    attributes:
+      value: |
+        Введите список задач в следующем формате:
+        ```
+        - [ ] Задача 1
+          - Definition of Done для задачи 1
+          - Ещё Definition of Done для задачи 1
+        - [ ] Задача 2
+          - Definition of Done для задачи 2
+          - Ещё Definition of Done для задачи 2
+        ```
+  - type: textarea
+    id: tasks-list
+    attributes:
+      label: Введите список задач
+      description: по форме, написанной выше
+      placeholder: |
+        - [ ] Задача 1
+          - Definition of Done для задачи 1
+          - Ещё Definition of Done для задачи 1
+        - [ ] Задача 2
+          - Definition of Done для задачи 2
+          - Ещё Definition of Done для задачи 2
+      value: "Произошёл баг!"
+    validations:
+      required: true
