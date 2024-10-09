@@ -32,3 +32,7 @@ body:
       label: Вывод в консоль / записи в логах
       description: Пожалуйста, скопируйте и вставьте вывод в консоль (например, stack trace) или сообщения из логов, которые могут быть связаны с ошибкой.
       render: shell
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Дополнительная информация
