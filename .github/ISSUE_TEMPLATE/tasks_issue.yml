@@ -14,14 +14,14 @@ body:
          Введите список задач в формате Markdown (каждая из задач начинается с новой строки и символов `- [ ]`). У каждой задачи -- один или несколько пунктов
          **Definition of Done** (критерии оценки выполнения задачи). Они оформляются как подпункты маркированного списка (начинаются с отступа и символов `- `).
          Пример:
-        ```
-        - [ ] Задача 1
-          - Definition of Done для задачи 1
-          - Ещё Definition of Done для задачи 1
-        - [ ] Задача 2
-          - Definition of Done для задачи 2
-          - Ещё Definition of Done для задачи 2
-        ```
+         ```
+         - [ ] Задача 1
+           - Definition of Done для задачи 1
+           - Ещё Definition of Done для задачи 1
+         - [ ] Задача 2
+           - Definition of Done для задачи 2
+           - Ещё Definition of Done для задачи 2
+         ```
   - type: textarea
     id: tasks-list
     attributes:
