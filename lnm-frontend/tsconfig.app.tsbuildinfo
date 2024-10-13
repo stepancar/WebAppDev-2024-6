@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"root":["./src/app.tsx","./src/counter.test.tsx","./src/counter.tsx","./src/main.tsx","./src/setuptests.ts","./src/vite-env.d.ts"],"version":"5.6.3"}
+=======
+{"root":["./src/app.tsx","./src/main.tsx","./src/setuptests.ts","./src/vite-env.d.ts"],"version":"5.6.3"}
+>>>>>>> 6d1892f25e765b2b625581dc37df664bed85723e

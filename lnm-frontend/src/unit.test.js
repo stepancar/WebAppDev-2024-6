@@ -37,3 +37,23 @@ describe('SignUpForm', () => {
     });
 });
 
+<<<<<<< HEAD
+=======
+
+describe('SignInForm', () => {
+    beforeEach(() => {
+        delete window.location;
+        window.location = { assign: jest.fn() };
+    });
+
+    test('should navigate to sign-in page', () => {
+        SignUpForm();
+        expect(window.location.assign).toHaveBeenCalledWith(
+            "http://localhost:50796/LogicNovelMystery-main/LogicNovelMystery-main/lnm-frontend/index.html?_ijt=oo2cs3p8t8jjm37cerueghbjm7&_ij_reload=RELOAD_ON_SAVE"
+        );
+    });
+});
+
+
+
+>>>>>>> 6d1892f25e765b2b625581dc37df664bed85723e
