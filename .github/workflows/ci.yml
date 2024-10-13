@@ -24,6 +24,7 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
+        working-directory: ./lnm-frontend
         run: npm install
 
       - name: Run unit tests
