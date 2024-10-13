@@ -1,5 +1,5 @@
 const { showError } = require('./unit.js');
-const { SignUpForm } = require('./unit.js');
+const { SignUpForm, SignInForm } = require('./unit.js');
 
 
 describe('showError', () => {
@@ -45,9 +45,9 @@ describe('SignInForm', () => {
     });
 
     test('should navigate to sign-in page', () => {
-        SignUpForm();
+        SignInForm();
         expect(window.location.assign).toHaveBeenCalledWith(
-            "http://localhost:50796/LogicNovelMystery-main/LogicNovelMystery-main/lnm-frontend/index.html?_ijt=oo2cs3p8t8jjm37cerueghbjm7&_ij_reload=RELOAD_ON_SAVE"
+            "http://localhost:50796/LogicNovelMystery-main/LogicNovelMystery-main/lnm-frontend/index.html"
         );
     });
 });
