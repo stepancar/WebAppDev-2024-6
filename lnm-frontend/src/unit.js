@@ -55,14 +55,14 @@ function SignUpForm() {
     window.location.assign("http://localhost:50796/LogicNovelMystery-main/LogicNovelMystery-main/lnm-frontend/src/signUpForm.html");
 }
 
-<<<<<<< HEAD
-module.exports = { showError  , SignUpForm};
-=======
 
 function SignInForm() {
     window.location.assign("http://localhost:50796/LogicNovelMystery-main/LogicNovelMystery-main/lnm-frontend/index.html");
 }
 
 
+
 module.exports = { showError  , SignUpForm , SignInForm};
->>>>>>> 6d1892f25e765b2b625581dc37df664bed85723e
+
+
+module.exports = { showError  , SignUpForm , SignInForm};

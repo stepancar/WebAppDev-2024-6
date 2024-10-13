@@ -37,8 +37,6 @@ describe('SignUpForm', () => {
     });
 });
 
-<<<<<<< HEAD
-=======
 
 describe('SignInForm', () => {
     beforeEach(() => {
@@ -55,5 +53,3 @@ describe('SignInForm', () => {
 });
 
 
-
->>>>>>> 6d1892f25e765b2b625581dc37df664bed85723e
