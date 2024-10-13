@@ -61,4 +61,8 @@ function SignInForm() {
 }
 
 
+
+module.exports = { showError  , SignUpForm , SignInForm};
+
+
 module.exports = { showError  , SignUpForm , SignInForm};
