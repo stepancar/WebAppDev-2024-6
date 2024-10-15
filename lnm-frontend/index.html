@@ -5,6 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
+    <link rel="stylesheet" href="src/index.css">
   </head>
   <body>
   <form id="form">
@@ -22,7 +23,13 @@
     <p>No account? Click <a href="src/signUpForm.html" onclick="SignUpForm()" >sign up</a>.</p>
   </form>
   <div id="root"></div>
+  <div>
+    <label>
+      <input type="checkbox" name="pass-logging" id="pass-logging">
+      pass logging
+    </label>
+  </div>
   <script type="module" src="src/unit.js"></script>
-  <script type="module" src="/src/main.tsx"></script>
+  <script type="module" src="src/main.tsx"></script>
   </body>
 </html>
