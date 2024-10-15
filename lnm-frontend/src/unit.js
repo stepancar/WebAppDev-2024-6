@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			const nameValue = nameInput.value.trim();
 
 			if (nameValue === '') {
-				// Sample comment
 				showError('You need to input your name');
 				return;
 			}
