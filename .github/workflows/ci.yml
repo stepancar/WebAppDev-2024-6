@@ -12,7 +12,30 @@ on:
       - backend
 
 jobs:
-  test:
+  lint-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        working-directory: ./lnm-frontend
+        run: npm install
+
+      - name: Lint JS/TS
+        working-directory: ./lnm-frontend
+        run: npm lint:js
+
+      - name: Lint styles
+        working-directory: ./lnm-frontend
+        run: npm lint:styles
+        
+  test-frontend:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
