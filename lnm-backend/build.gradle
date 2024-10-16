@@ -45,7 +45,7 @@ dependencies {
     implementation 'org.springframework.integration:spring-integration-mail'
     implementation 'org.springframework.integration:spring-integration-security'
     compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+//  developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
     runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
@@ -90,7 +90,7 @@ jacocoTestCoverageVerification {
     violationRules {
         rule {
             limit {
-                minimum = 0.00  // Требуется минимум 80% покрытия кода
+                minimum = 0.80  // Требуется минимум 80% покрытия кода
             }
         }
     }
