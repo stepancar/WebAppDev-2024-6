@@ -6,7 +6,9 @@ const App: React.FC = () => {
 	const navigate = useNavigate();
 	useEffect(() => {
 		const form = document.getElementById('form') as HTMLFormElement | null;
-		const checkbox = document.getElementById('pass-logging') as HTMLInputElement | null;
+		const checkbox = document.getElementById(
+			'pass-logging'
+		) as HTMLInputElement | null;
 
 		const handleSubmit = (event: Event) => {
 			event.preventDefault();
