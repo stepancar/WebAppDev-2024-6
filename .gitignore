@@ -25,3 +25,5 @@ replay_pid*
 
 # sprite originals
 docs/novel/images/sprite_origs
+
+lnm-frontend/package-lock.json
