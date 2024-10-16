@@ -42,10 +42,13 @@ jobs:
     - name: Run tests
       run: ./gradlew test
 
-    # Шаг 5: Публикация отчетов о тестах
-    - name: Upload test results
-      if: always()
+    # Шаг 5: Запуск тестов и проверка покрытия
+    - name: Run tests and check coverage
+      run: ./gradlew check jacocoTestReport
+
+    # Публикация HTML отчета о покрытии кода как артефакт
+    - name: Upload coverage report
       uses: actions/upload-artifact@v3
       with:
-        name: test-results
-        path: build/test-results/test
+        name: coverage-report
+        path: build/reports/jacoco/test/html
