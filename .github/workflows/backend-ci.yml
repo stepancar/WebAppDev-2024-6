@@ -38,12 +38,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
   
-      # Шаг 4: Сборка проекта и запуск тестов
+      # Шаг 4: Сделать gradlew исполняемым
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./lnm-backend/gradlew
+  
+      # Шаг 5: Сборка проекта и запуск тестов
       - name: Run tests
         working-directory: ./lnm-backend
         run: ./gradlew test
   
-      # Шаг 5: Публикация отчетов о тестах
+      # Шаг 6: Публикация отчетов о тестах
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v3
