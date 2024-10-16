@@ -1,15 +1,15 @@
-name: CI Pipeline
+name: Frontend CI Pipeline
 
 on:
   pull_request:
     branches:
       - main
       - frontend
-      - backend
+    paths-ignore:
+      - 'lnm-backend/**' # Ignore backend-specific paths
   push:
     branches:
       - frontend
-      - backend
 
 jobs:
   lint-frontend:
