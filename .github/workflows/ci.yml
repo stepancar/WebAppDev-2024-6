@@ -50,6 +50,10 @@ jobs:
         working-directory: ./lnm-frontend
         run: npm install
 
+      - name: Install playwright dependencies
+        working-directory: ./lnm-frontend
+        run: npx playwright install
+
       - name: Start server
         working-directory: ./lnm-frontend
         run: |
@@ -70,7 +74,11 @@ jobs:
 
       - name: Stop server
         if: always()
-        run: kill $(lsof -t -i:5173)
+        run: |
+          PID=$(lsof -t -i:5173)
+          if [ -n "$PID" ]; then
+            kill $PID
+          fi
 
       - name: Upload coverage report
         if: always()
