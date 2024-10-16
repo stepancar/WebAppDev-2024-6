@@ -5,11 +5,13 @@ on:
     branches:
       - main
       - frontend
-    paths-ignore:
-      - 'lnm-backend/**' # Ignore backend-specific paths
+    paths:
+      - 'lnm-frontend/**'
   push:
     branches:
       - frontend
+    paths:
+      - 'lnm-frontend/**'
 
 jobs:
   lint-frontend:
