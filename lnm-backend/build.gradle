@@ -4,6 +4,7 @@ plugins {
     id 'org.springframework.boot' version '3.2.10'
     id 'io.spring.dependency-management' version '1.1.6'
     id 'org.asciidoctor.jvm.convert' version '3.3.2'
+    id 'jacoco'
 }
 
 group = 'ru.itmo.logic-novel-mystery'
@@ -44,7 +45,7 @@ dependencies {
     implementation 'org.springframework.integration:spring-integration-mail'
     implementation 'org.springframework.integration:spring-integration-security'
     compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+//  developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
     runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
@@ -63,6 +64,9 @@ dependencyManagement {
         mavenBom "io.sentry:sentry-bom:${sentryVersion}"
     }
 }
+jacoco {
+    toolVersion = "0.8.10"
+}
 
 tasks.named('test') {
     outputs.dir snippetsDir
@@ -73,3 +77,23 @@ tasks.named('asciidoctor') {
     inputs.dir snippetsDir
     dependsOn test
 }
+jacocoTestReport {
+    dependsOn test  // Генерация отчета после выполнения тестов
+    reports {
+        xml.required = true
+        html.required = true  // Генерация HTML отчета для удобного просмотра в браузере
+    }
+}
+
+jacocoTestCoverageVerification {
+    dependsOn test  // Сначала запускаем тесты
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.80  // Требуется минимум 80% покрытия кода
+            }
+        }
+    }
+}
+
+tasks.check.dependsOn jacocoTestCoverageVerification
