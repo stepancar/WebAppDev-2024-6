@@ -14,4 +14,5 @@ export default defineConfig({
         { name: 'chromium' },
         { name: 'firefox' },
     ],
+    reporter: "list"
 });
