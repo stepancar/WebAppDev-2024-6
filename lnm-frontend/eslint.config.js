@@ -56,7 +56,11 @@ export default [
                     ignoreReadBeforeAssign: true,
                 },
             ],
-            'prettier/prettier': 'error', // Prettier rule as an error
+            'prettier/prettier': [
+                'error', {
+                    "endOfLine": "auto"
+                }
+            ], // Prettier rule as an error
         },
     },
     {

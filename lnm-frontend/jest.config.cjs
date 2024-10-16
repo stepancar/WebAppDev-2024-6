@@ -16,7 +16,7 @@ module.exports = {
     coverageReporters: ['json', 'lcov', 'text', 'clover'],
 
     // Указываем, какие файлы учитывать при сборе покрытия
-    collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts'],
+    collectCoverageFrom: ['src/**/*.{ts,tsx,js,jsx}', '!src/**/*.d.ts'],
 
     // Минимальные значения покрытия
     coverageThreshold: {
