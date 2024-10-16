@@ -50,10 +50,6 @@ jobs:
         working-directory: ./lnm-frontend
         run: npm install
 
-      - name: Install playwright dependencies
-        working-directory: ./lnm-frontend
-        run: npx playwright install
-
       - name: Start server
         working-directory: ./lnm-frontend
         run: |
