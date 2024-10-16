@@ -5,11 +5,13 @@ on:
     branches:
       - main
       - backend
-    paths-ignore:
-      - 'lnm-frontend/**' # Ignore frontend-specific paths
+    paths:
+      - 'lnm-backend/**' # Ignore frontend-specific paths
   push:
     branches:
       - backend
+    paths:
+      - 'lnm-backend/**' # Ignore frontend-specific paths
 
 jobs:
   backend-test:
