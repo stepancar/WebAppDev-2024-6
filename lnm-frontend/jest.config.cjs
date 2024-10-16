@@ -9,7 +9,7 @@ module.exports = {
     testMatch: ['**/?(*.)+(test).js'],
 
     // Собираем покрытие тестами
-    collectCoverage: true,
+    collectCoverage: false,
 
     // Отчеты о покрытии кода
     coverageDirectory: 'coverage',
