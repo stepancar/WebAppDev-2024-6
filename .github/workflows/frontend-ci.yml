@@ -5,17 +5,14 @@ on:
     branches:
       - main
       - frontend
-    paths:
-      - 'lnm-frontend/**'
   push:
     branches:
       - frontend
-    paths:
-      - 'lnm-frontend/**'
 
 jobs:
   lint-frontend:
     runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.head.repo.name, 'lnm-frontend/**')
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -39,6 +36,8 @@ jobs:
         
   test-frontend:
     runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.head.repo.name, 'lnm-frontend/**')
+    needs: lint-frontend
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
