@@ -28,13 +28,13 @@ jobs:
       if: steps.filter.outputs.frontend_dir == 'true'
       run: |
         echo 'There were changes in lnm-frontend/**, proceeding...'
-        echo ::set-output name=has_changes:true
+        echo ::set-output name=has_changes::true
     # run only if not files were changed
     - name: Frontend files were not changed
       if: steps.filter.outputs.frontend_dir != 'true'
       run: |
         echo 'There were no changes in lnm-frontend/**, skipping subsequent frontend jobs...'
-        echo ::set-output name=has_changes:false
+        echo ::set-output name=has_changes::false
             
   lint-frontend:
     runs-on: ubuntu-latest
