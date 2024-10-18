@@ -6,7 +6,7 @@ on:
       - main
       - frontend
     paths:
-      - 'lnm-frontend/**' # Ignore backend-specific paths
+      - 'lnm-frontend/**'
   push:
     branches:
       - frontend
