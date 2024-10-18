@@ -10,9 +10,36 @@ on:
       - frontend
 
 jobs:
+  check-changes-frontend:
+    runs-on: ubuntu-latest
+    outputs:
+      output_1: ${{ steps.filter.outputs.frontend_dir }}
+      output_2: ${{ steps.filter.outputs.output_2 }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: dorny/paths-filter@v3
+      id: filter
+      with:
+        filters: |
+          frontend_dir:
+            - 'lnm-frontend/**'
+    # run only if 'workflows' files were changed
+    - name: workflow tests
+      if: steps.filter.outputs.frontend_dir == 'true'
+      run: |
+        echo 'There were changes in lnm-frontend/**, proceeding...'
+        echo 'output_2=true' >> "$GITHUB_OUTPUT"
+    # run only if not 'workflows' files were changed
+    - name: not workflow tests
+      if: steps.filter.outputs.frontend_dir != 'true'
+      run: |
+        echo 'There were no changes in lnm-frontend/**, skipping subsequent frontend jobs...'
+        echo 'output_2=false' >> "$GITHUB_OUTPUT"
+            
   lint-frontend:
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.head.repo.name, 'lnm-frontend/**')
+    needs: check-changes-frontend
+    if: ${{ needs.check-changes-frontend.outputs.output_2 == 'true' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -36,7 +63,6 @@ jobs:
         
   test-frontend:
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.head.repo.name, 'lnm-frontend/**')
     needs: lint-frontend
     steps:
       - name: Checkout code
