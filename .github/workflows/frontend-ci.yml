@@ -46,7 +46,7 @@ jobs:
 
       - name: TODO
         run: |
-          echo $GITHUB_OUTPUT
+          echo ${{ toJSON(needs.check-changes-frontend.outputs) }}
           echo ${{ needs.check-changes-frontend.outputs.has_changes }}
 
       - name: Set up Node.js
