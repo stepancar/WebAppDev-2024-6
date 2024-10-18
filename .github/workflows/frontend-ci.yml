@@ -33,6 +33,7 @@ jobs:
     - name: not workflow tests
       if: steps.filter.outputs.frontend_dir != 'true'
       run: |
+        echo 'There were no changes in lnm-frontend/**, skipping subsequent frontend jobs...'
         echo 'output_2=false' >> "$GITHUB_OUTPUT"
             
   lint-frontend:
