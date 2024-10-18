@@ -5,18 +5,15 @@ on:
     branches:
       - main
       - backend
-    paths:
-      - 'lnm-backend/**' # Ignore frontend-specific paths
+    paths-ignore:
+      - 'lnm-frontend/**'
   push:
     branches:
       - backend
-    paths:
-      - 'lnm-backend/**' # Ignore frontend-specific paths
 
 jobs:
   backend-test:
     runs-on: ubuntu-latest
-  
     steps:
       # Шаг 1: Клонирование репозитория
       - name: Checkout code
