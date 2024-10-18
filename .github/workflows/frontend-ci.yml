@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       frontend_dir: ${{ steps.filter.outputs.frontend_dir }}
-      has_changes: undefined
+      has_changes: ${{ steps.check_changes.outputs.has_changes }}
     steps:
     - uses: actions/checkout@v4
     - uses: dorny/paths-filter@v3
@@ -23,18 +23,18 @@ jobs:
         filters: |
           frontend_dir:
             - 'lnm-frontend/**'
-    # run only if files were changed
     - name: Frontend files were changed
-      if: steps.filter.outputs.frontend_dir == 'true'
+      id: check_changes
       run: |
-        echo 'There were changes in lnm-frontend/**, proceeding...'
-        echo "has_changes=true" >> $GITHUB_OUTPUT
-    # run only if not files were changed
-    - name: Frontend files were not changed
-      if: steps.filter.outputs.frontend_dir != 'true'
-      run: |
-        echo 'There were no changes in lnm-frontend/**, skipping subsequent frontend jobs...'
-        echo "has_changes=false" >> $GITHUB_OUTPUT
+        echo ${{ steps.filter.outputs.frontend_dir }}
+
+        if ${{ steps.filter.outputs.frontend_dir }} == 'true'; then
+          echo 'There were changes in lnm-frontend/**, proceeding...'
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+        else
+          echo 'There were no changes in lnm-frontend/**, skipping other jobs...'
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+        fi
 
   some-debug-job:
     runs-on: ubuntu-latest
