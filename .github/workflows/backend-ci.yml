@@ -21,7 +21,7 @@ jobs:
       id: filter
       with:
         filters: |
-          frontend_dir:
+          backend_dir:
             - 'lnm-backend/**'
     - name: Were backend files changed?
       id: check_changes
