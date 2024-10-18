@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       frontend_dir: ${{ steps.filter.outputs.frontend_dir }}
-      has_changes: ${{ steps.filter.outputs.has_changes }}
+      has_changes: true
     steps:
     - uses: actions/checkout@v4
     - uses: dorny/paths-filter@v3
@@ -23,18 +23,18 @@ jobs:
         filters: |
           frontend_dir:
             - 'lnm-frontend/**'
-    # run only if 'workflows' files were changed
-    - name: workflow tests
+    # run only if files were changed
+    - name: Frontend files were changed
       if: steps.filter.outputs.frontend_dir == 'true'
       run: |
         echo 'There were changes in lnm-frontend/**, proceeding...'
-        echo 'output_2=true' >> "$GITHUB_OUTPUT"
-    # run only if not 'workflows' files were changed
-    - name: not workflow tests
+        echo ::set-output name=has_changes:true
+    # run only if not files were changed
+    - name: Frontend files were not changed
       if: steps.filter.outputs.frontend_dir != 'true'
       run: |
         echo 'There were no changes in lnm-frontend/**, skipping subsequent frontend jobs...'
-        echo ::set-output name=has_changes:true
+        echo ::set-output name=has_changes:false
             
   lint-frontend:
     runs-on: ubuntu-latest
