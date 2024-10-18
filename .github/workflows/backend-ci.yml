@@ -16,7 +16,6 @@ on:
 jobs:
   backend-test:
     runs-on: ubuntu-latest
-    if: github.head_ref == 'backend' || github.head_ref != 'frontend'
     steps:
       # Шаг 1: Клонирование репозитория
       - name: Checkout code
