@@ -7,7 +7,7 @@ test.describe('Example e2e Test Suite', () => {
         await expect(page).toHaveTitle("Vite + React + TS");  // Проверка заголовка страницы
     });
 
-    test('User can log in', async ({ page }) => {
+    test.only('User can log in', async ({ page }) => {
         await page.goto('http://localhost:5173');
         await page.click('input[type="checkbox"]')
         await page.fill('input[name="login"]', 'test_user');
