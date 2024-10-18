@@ -5,8 +5,6 @@ on:
     branches:
       - main
       - backend
-    paths-ignore:
-      - 'lnm-frontend/**'
   push:
     branches:
       - backend
@@ -14,6 +12,7 @@ on:
 jobs:
   backend-test:
     runs-on: ubuntu-latest
+    if: ${{ github.ref != 'refs/heads/frontend' }}
     steps:
       # Шаг 1: Клонирование репозитория
       - name: Checkout code
