@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       frontend_dir: ${{ steps.filter.outputs.frontend_dir }}
-      has_changes: true
+      has_changes: false
     steps:
     - uses: actions/checkout@v4
     - uses: dorny/paths-filter@v3
@@ -46,7 +46,7 @@ jobs:
 
       - name: TODO
         run: |
-          echo ${{ toJSON(needs.check-changes-frontend.outputs) }}
+          echo '${{ toJSON(needs.check-changes-frontend.outputs) }}'
           echo ${{ needs.check-changes-frontend.outputs.has_changes }}
 
       - name: Set up Node.js
