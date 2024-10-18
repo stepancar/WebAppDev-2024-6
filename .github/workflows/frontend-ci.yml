@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       frontend_dir: ${{ steps.filter.outputs.frontend_dir }}
-      has_changes: false
     steps:
     - uses: actions/checkout@v4
     - uses: dorny/paths-filter@v3
