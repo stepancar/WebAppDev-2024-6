@@ -12,7 +12,7 @@ on:
 jobs:
   backend-test:
     runs-on: ubuntu-latest
-    if: {{ github.ref != 'refs/heads/frontend' }}
+    if: ${{ github.ref != 'refs/heads/frontend' }}
     steps:
       # Шаг 1: Клонирование репозитория
       - name: Checkout code
