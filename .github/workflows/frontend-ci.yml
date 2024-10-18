@@ -10,17 +10,33 @@ on:
       - frontend
 
 jobs:
-  enforce-all-checks:
+  check-changes-frontend:
     runs-on: ubuntu-latest
-    permissions:
-      checks: read
+    outputs:
+      output1: ${{ steps.filter.outputs.frontend }}
     steps:
-      - name: GitHub Checks
-        uses: poseidon/wait-for-status-checks@v0.4.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v4
+    - uses: dorny/paths-filter@v3
+      id: filter
+      with:
+        filters: |
+          frontend:
+            - 'lnm-frontend/**'
+    # run only if 'workflows' files were changed
+    - name: workflow tests
+      if: steps.filter.outputs.frontend == 'true'
+      run: |
+        echo 'There were changes in lnm-frontend/**, proceeding...'
+    # run only if not 'workflows' files were changed
+    - name: not workflow tests
+      if: steps.filter.outputs.frontend != 'true'
+      run: |
+        echo 'There were no changes in lnm-frontend/**, exiting'
+        exit 0
+            
   lint-frontend:
     runs-on: ubuntu-latest
+    needs: check-changes-frontend
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
