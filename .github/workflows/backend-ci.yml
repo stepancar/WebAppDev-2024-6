@@ -6,17 +6,17 @@ on:
       - main
       - backend
     paths:
-      - 'lnm-backend/**' # Ignore frontend-specific paths
+      - 'lnm-backend/**'
   push:
     branches:
       - backend
     paths:
-      - 'lnm-backend/**' # Ignore frontend-specific paths
+      - 'lnm-backend/**'
 
 jobs:
   backend-test:
     runs-on: ubuntu-latest
-  
+    if: github.head_ref == 'backend' || github.head_ref != 'frontend'
     steps:
       # Шаг 1: Клонирование репозитория
       - name: Checkout code
