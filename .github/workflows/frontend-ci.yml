@@ -10,9 +10,17 @@ on:
       - frontend
 
 jobs:
+  enforce-all-checks:
+    runs-on: ubuntu-latest
+    permissions:
+      checks: read
+    steps:
+      - name: GitHub Checks
+        uses: poseidon/wait-for-status-checks@v0.4.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
   lint-frontend:
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.head.repo.name, 'lnm-frontend/**')
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -36,7 +44,6 @@ jobs:
         
   test-frontend:
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.head.repo.name, 'lnm-frontend/**')
     needs: lint-frontend
     steps:
       - name: Checkout code
